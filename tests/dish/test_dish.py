@@ -12,6 +12,7 @@ def test_dish():
     assert dish.get_ingredients() == {'salmão'}
     print(dish.__hash__())
     assert dish.__hash__() == hash(Dish("salmão com salada", 80.00))
+    assert dish.__hash__() != hash(Dish("salmão com salada", 70.00))
 
     with pytest.raises(
         ValueError, match='Dish price must be greater then zero.'

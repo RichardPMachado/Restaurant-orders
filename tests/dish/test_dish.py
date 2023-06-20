@@ -10,8 +10,9 @@ def test_dish():
     assert dish.price == 80.00
     dish.add_ingredient_dependency('salmão', 2)
     assert dish.get_ingredients() == {'salmão'}
-    print(dish.__repr__())
-    assert dish.__repr__() == "Dish(salmão com salada, 80.00)"
+    # print(dish.__repr__())
+    assert dish.__repr__() == "Dish('salmão com salada', R$80.00)"
+    assert dish.__eq__(Dish('salmão com salada', 80.00)) is True
     assert dish.__hash__() == hash(Dish("salmão com salada", 80.00))
     assert dish.__hash__() != hash(Dish("salmão com salada", 70.00))
 
@@ -24,4 +25,3 @@ def test_dish():
         TypeError, match='Dish price must be float.'
     ):
         Dish("doce de coco", '2')
-
